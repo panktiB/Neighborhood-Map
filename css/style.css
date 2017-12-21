@@ -1,0 +1,90 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family:'Lato', sans-serif;
+}
+
+html {
+    margin: auto;
+}
+
+body {
+    height: 100%;
+    overflow-x: hidden;
+    vertical-align: middle;
+    margin: 10px;
+    padding: 10px;
+}
+
+#map {
+    height: 100vh;
+    width: 100vw,
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.list {
+    color: white;
+    padding: 1em;
+    margin: 0 0 0 0;
+    font-size: 1.2em;
+    list-style: none;
+    cursor: pointer;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 40%;
+    font-size: 36px;
+    margin-left: 0px;
+    color: white;
+}
+
+.openbtn {
+	font-size: 30px;
+	cursor: pointer;
+}
+
+.list-el {
+    padding: 5px;
+    display: block;
+}
+
+.info {
+    padding: 5px;
+    display: block;
+    font-size: 1em;
+}
+
+.marker-title {
+    position: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+h3{
+	color: white;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

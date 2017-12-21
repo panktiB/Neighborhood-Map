@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Map Project</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+		<h3>Search for</h3>
+
+		<div id="searchbox">
+			<input type="search" id="search" name="search" placeholder="Search.." autocomplete="off" data-bind="value: query, valueUpdate: 'keyup',event: {keyup: search}">
+		</div>
+		
+		<ul class="list" data-bind="foreach: places">
+			<li class="list-el" data-bind="text: title,visible: show, click: $parent.handle">
+				
+			</li>
+		</ul>
+
+		<div class="info"></div>
+		
+	</div>
+
+	<div id="main" class="container">
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<h2>Tourist Spots in Mumbai</h2>
+				<p>Click on button below to open navigation</p>
+				<span class="openbtn" onclick="openNav()">&#9776; Open</span>
+			</div>
+		</div>
+		<!--<h2>Bars in Mumbai</h2>
+		<p>Click on button below to open navigation</p>
+		<span class="openbtn" onclick="openNav()">&#9776; Open</span>-->
+
+		<div class="row">
+			<div id="map"></div>
+		</div>
+
+	</div>
+
+
+	<script src="js/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/knockout-3.4.2.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/app.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyASL0ymuQtO8BHsMj5sO7CowpaKGQiLBi0&callback=initMap"></script>
+
+</body>
+</html>
