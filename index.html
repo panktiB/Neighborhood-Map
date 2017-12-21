@@ -20,7 +20,7 @@
 		</div>
 		
 		<ul class="list" data-bind="foreach: places">
-			<li class="list-el" data-bind="text: title,visible: show, click: $parent.handle">
+			<li class="list-el" data-bind="text: title,visible: show, click: $root.handle">
 				
 			</li>
 		</ul>
@@ -45,6 +45,13 @@
 		<div class="row">
 			<div id="map"></div>
 		</div>
+
+		<div class="error-div-wrapper">
+        <!--Observable for Google Maps Error Div -->
+            <div class="map-err" data-bind="visible: unavailable">
+                <p>Sorry Google Maps is unable to load right now.<br>Please check your connection and refresh the page, or try again later.</p>
+            </div>
+        </div>
 
 	</div>
 

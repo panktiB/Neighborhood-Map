@@ -1,6 +1,6 @@
 var map;
 var infowindow;
-var markers = [];
+var markers = []; 
 var latlng = {
 	lat: 19.0760,
 	lng: 72.8777
@@ -81,6 +81,10 @@ function initMap() {
 			zoom: 11
 		});
 	}
+  else {
+    // Load error div using knockout if Google Map does not successfully load
+    viewModel.unavailable(true);
+  }
 
 	infowindow = new google.maps.InfoWindow();
 
@@ -182,3 +186,8 @@ function loadData(marker, infowindow) {
 
     return false;
 }
+
+// Fallback error handling method for Google Maps
+    mapError = function () {
+        viewModel.unavailable(true);
+    };

@@ -100,7 +100,8 @@ var places = [
 var viewModel = {
 
 	places: ko.observableArray(places),
-	markers: ko.observableArray(markers)
+	markers: ko.observableArray(markers),
+	unavailable: ko.observable(false)
 };
 
 viewModel.query = ko.observable('');
@@ -113,12 +114,12 @@ viewModel.search = function() {
     }
     else  {
         ko.utils.arrayFilter(viewModel.places(), function(place) {		
-        var title = place.title.toLowerCase();
-        if (title.indexOf(q) > -1)		
-            place.show(true);
-        else
-            place.show(false);
-	});    
+        	var title = place.title.toLowerCase();
+        	if (title.indexOf(q) > -1)		
+            	place.show(true);
+        	else
+            	place.show(false);
+		});    
     }
 }
 
@@ -138,6 +139,5 @@ viewModel.handle = function(location) {
 	}
 
 }
-
 
 ko.applyBindings(viewModel);

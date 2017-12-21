@@ -84,6 +84,20 @@ h3{
 	color: white;
 }
 
+.map-err {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgb(104, 104, 104);
+    z-index: 102;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1em 0 0 5em;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
