@@ -130,12 +130,12 @@ function makeMarkerIcon(markerColor) {
     return markerImage;
 }
 
-function populateInfoWindow(marker, infowindow) {
+function populateInfoWindow(marker) {
 	
 	if(infowindow.marker != marker) {
 		
 		infowindow.marker = marker;
-		
+
 		infowindow.setContent('<div class="marker-title">' + marker.title + '</div>');
 
 		infowindow.open(map, marker);
@@ -145,12 +145,12 @@ function populateInfoWindow(marker, infowindow) {
 		});
 	}
 	marker.addListener('click', onMarkerClick(marker, infowindow));
-  marker.addListener('click', function(){
-    this.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function() {
-      marker.setAnimation(null);
-    }, 600);
-  });
+
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function() {
+    marker.setAnimation(null);
+  }, 600);
+
 }
 
 function onMarkerClick(marker, infowindow) {

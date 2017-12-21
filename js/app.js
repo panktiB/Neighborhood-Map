@@ -129,7 +129,14 @@ viewModel.showAll = function(val) {
     }
 }
 viewModel.handle = function(location) {
-	infowindow.open(map, location);
+	var self = this;
+
+	for(var i = 0; i < viewModel.markers().length; i++) {
+		if(location.title == viewModel.markers()[i].title) {
+			populateInfoWindow(viewModel.markers()[i]);
+		}
+	}
+
 }
 
 
