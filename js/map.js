@@ -4,7 +4,7 @@ var markers = []; //empty markers array
 var latlng = {
 	lat: 19.0760,
 	lng: 72.8777
-}
+};
 
 //function to initialise map
 function initMap() {
@@ -94,8 +94,9 @@ function initMap() {
 	var highlightedIcon = makeMarkerIcon('FFFF24');
 
 	var tourSpots = viewModel.places();
+  var arrLen = tourSpots.length;
   //loop through the observable places array and create markers array according to that information
-	for(var i = 0; i < tourSpots.length; i++) {
+	for(var i = 0; i < arrLen; i++) {
 
 		var position = tourSpots[i].location;
 		var title = tourSpots[i].title;
@@ -151,7 +152,11 @@ function populateInfoWindow(marker) {
 		infowindow.open(map, marker); //open the infowindow
 
 		infowindow.addListener('closeclick', function() {
-			infowindow.marker = null;
+      infowindow.marker = null;
+      //looping through each marker and setting it to visible on closing infowindow of any other marker
+      for(var i = 0; i < markers.length; i++) {
+        markers[i].setVisible(true);
+      }
 		});
 	}
 
@@ -162,14 +167,13 @@ function populateInfoWindow(marker) {
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function() {
     marker.setAnimation(null);
-  }, 600);
+  }, 700);
 
 }
 
 //function to load wikipedia api and access information and add that to each infowindow
 function loadData(marker, infowindow) {
 
-  var $body = $('body');
   var $information = $('.info');
   $information.text = "";
 

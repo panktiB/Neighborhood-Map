@@ -124,7 +124,7 @@ viewModel.search = function() {
             	place.show(false);
 		});    
     }
-}
+};
 
 //function to make all the 'show' of each object in places array to true such that all are visible on list
 viewModel.showAll = function(val) {
@@ -132,18 +132,23 @@ viewModel.showAll = function(val) {
     for (var i = 0; i < viewModel.places().length; i++) {
       viewModel.places()[i].show(val);
     }
-}
+};
 
 //function to handle what happens when a list item is clicked on. it opens up that particular infowindow
 viewModel.handle = function(location) {
 	var self = this;
 
 	for(var i = 0; i < viewModel.markers().length; i++) {
+		//setting each marker visibility to true
+		viewModel.markers()[i].setVisible(true);
+
 		if(location.title == viewModel.markers()[i].title) {
 			populateInfoWindow(viewModel.markers()[i]);
 		}
+		else {
+			viewModel.markers()[i].setVisible(false);//setting visiblity of every other marker to false
+		}
 	}
-
-}
+};
 
 ko.applyBindings(viewModel);
