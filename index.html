@@ -11,9 +11,19 @@
 <body>
 
 	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="container nav-check">
+			<div class="row">
+				<div class="col-xs-6">
+					<h3>Search for</h3>
+				</div>
+				<div class="col-xs-3">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				</div>
+			</div>
+		</div>
+		<!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-		<h3>Search for</h3>
+		<h3>Search for</h3>-->
 
 		<div id="searchbox">
 			<input type="search" id="search" name="search" placeholder="Search.." autocomplete="off" data-bind="value: query, valueUpdate: 'keyup',event: {keyup: search}">

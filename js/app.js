@@ -1,3 +1,4 @@
+//array of places with title, lat, lng, and observable show for list 
 var places = [
 	{
 		title: 'Cafe Mondegar',
@@ -97,6 +98,7 @@ var places = [
 	}
 ];
 
+//viewModel with observable array of places, markers and an observable var for list
 var viewModel = {
 
 	places: ko.observableArray(places),
@@ -104,13 +106,14 @@ var viewModel = {
 	unavailable: ko.observable(false)
 };
 
+//observable for filter function to be used in list in nav
 viewModel.query = ko.observable('');
 
+//search function for filtering and searching through the list acc to what is typed in searchbox
 viewModel.search = function() {
     var q = viewModel.query().toLowerCase();
     if(q.length === 0) {
         viewModel.showAll(true);
-        console.log("here");
     }
     else  {
         ko.utils.arrayFilter(viewModel.places(), function(place) {		
@@ -123,12 +126,15 @@ viewModel.search = function() {
     }
 }
 
+//function to make all the 'show' of each object in places array to true such that all are visible on list
 viewModel.showAll = function(val) {
       
     for (var i = 0; i < viewModel.places().length; i++) {
       viewModel.places()[i].show(val);
     }
 }
+
+//function to handle what happens when a list item is clicked on. it opens up that particular infowindow
 viewModel.handle = function(location) {
 	var self = this;
 

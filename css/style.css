@@ -53,7 +53,7 @@ body {
     position: absolute;
     top: 0;
     right: 40%;
-    font-size: 36px;
+    font-size: 15px;
     margin-left: 0px;
     color: white;
 }
@@ -101,4 +101,116 @@ h3{
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+
+@media screen and (max-width: 360px) {
+  h2{
+    font-size: 1.1em;
+    margin-top: 0px;
+  }
+  p{
+    font-size: 1em;
+    margin-bottom: 0px;
+  }
+  .openbtn {
+    font-size: 0.8em;
+  }
+  .closebtn{
+    font-size: 0.8em;
+  }
+  h3{
+    font-size: 1em;
+  }
+  .list-el{
+    padding: 1px;
+    font-size: 0.8em;
+  }
+  .sidenav {
+    padding-top: 3px;
+  }
+}
+
+
+@media screen and (min-width: 361px) and (max-width: 640px){
+    h2{
+    font-size: 1.5em;
+    margin-top: 0px;
+  }
+  h3{
+    font-size: 1.5em;
+  }
+  p{
+    font-size: 1em;
+    margin-bottom: 0px;
+  }
+  .openbtn {
+    font-size: 1.3em;
+  }
+  .closebtn{
+    font-size: 1.2em;
+  }
+  
+  .list-el{
+    padding: 1px;
+    font-size: 1em;
+  }
+  .sidenav {
+    padding-top: 5px;
+  }
+}
+
+
+@media screen and (min-width: 641px) and (max-width: 767px) {
+    .closebtn {
+        font-size: 2em;
+    }
+    .sidenav {
+        padding-top: 5px;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .openbtn {
+        font-size: 1.3em;
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .closebtn {
+        font-size: 2em;
+    }
+    .nav-check {
+        width: 250px;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .openbtn {
+        font-size: 1.5em;
+    }
+    p{
+        font-size: 1.5em;
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (min-width: 851px) and (max-width: 1500px) {
+    .closebtn {
+        font-size: 2.5em;
+    }
+    .nav-check {
+        width: 250px;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .openbtn {
+        font-size: 1.8em;
+    }
+    p{
+        font-size: 1.5em;
+        margin-bottom: 0px;
+    }
 }

@@ -1,11 +1,12 @@
 var map;
 var infowindow;
-var markers = []; 
+var markers = []; //empty markers array
 var latlng = {
 	lat: 19.0760,
 	lng: 72.8777
 }
 
+//function to initialise map
 function initMap() {
 
 	var styles = [
@@ -82,16 +83,18 @@ function initMap() {
 		});
 	}
   else {
-    // Load error div using knockout if Google Map does not successfully load
+    //error handling for map
     viewModel.unavailable(true);
   }
 
 	infowindow = new google.maps.InfoWindow();
 
+  //declare different icons for mouseover and mouseout events
 	var defaultIcon = makeMarkerIcon('800000');
 	var highlightedIcon = makeMarkerIcon('FFFF24');
 
 	var tourSpots = viewModel.places();
+  //loop through the observable places array and create markers array according to that information
 	for(var i = 0; i < tourSpots.length; i++) {
 
 		var position = tourSpots[i].location;
@@ -106,8 +109,9 @@ function initMap() {
 			id: i
 		});
 
-		markers.push(marker);
+		markers.push(marker); //pushing each marker into the observable markers array
 
+    //adding event listeners to each marker for different colored markers
 		marker.addListener('mouseover', function() {
 			this.setIcon(highlightedIcon);
 		});
@@ -115,13 +119,14 @@ function initMap() {
 			this.setIcon(defaultIcon);
 		});
 
+    //event listener that opens the infowindow on clicking the marker
 		marker.addListener('click', function() {
-			populateInfoWindow(this, infowindow);
+			populateInfoWindow(this);
 		});
-
 	}
 }
 
+//function to create marker according to different color
 function makeMarkerIcon(markerColor) {
 
 	var markerImage = new google.maps.MarkerImage(
@@ -134,6 +139,7 @@ function makeMarkerIcon(markerColor) {
     return markerImage;
 }
 
+//function to open infowindow and add info from wikipedia to infowindow
 function populateInfoWindow(marker) {
 	
 	if(infowindow.marker != marker) {
@@ -142,14 +148,17 @@ function populateInfoWindow(marker) {
 
 		infowindow.setContent('<div class="marker-title">' + marker.title + '</div>');
 
-		infowindow.open(map, marker);
+		infowindow.open(map, marker); //open the infowindow
 
 		infowindow.addListener('closeclick', function() {
 			infowindow.marker = null;
 		});
 	}
-	marker.addListener('click', onMarkerClick(marker, infowindow));
 
+  //add event listener to each marker to load wikipedia api and grab info
+	marker.addListener('click', loadData(marker, infowindow));
+
+  //make each marker bounce!
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function() {
     marker.setAnimation(null);
@@ -157,13 +166,7 @@ function populateInfoWindow(marker) {
 
 }
 
-function onMarkerClick(marker, infowindow) {
-
-  var self = this;
-  loadData(marker, infowindow);
-
-}
-
+//function to load wikipedia api and access information and add that to each infowindow
 function loadData(marker, infowindow) {
 
   var $body = $('body');
@@ -181,13 +184,13 @@ function loadData(marker, infowindow) {
           infowindow.setContent('<div class="marker-title">' + marker.title + '</div>' + '<p class="info">' + text + '</p>');
         }
     }).fail(function(){
-        console.log("fail");
+        infowindow.setContent('<div class="info">Sorry, wikipedia was unable to load. Check your connection and try again.</div>');
     });
 
     return false;
 }
 
 // Fallback error handling method for Google Maps
-    mapError = function () {
-        viewModel.unavailable(true);
-    };
+mapError = function () {
+  viewModel.unavailable(true);
+};
