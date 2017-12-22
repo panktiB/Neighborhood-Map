@@ -112,16 +112,32 @@ viewModel.query = ko.observable('');
 //search function for filtering and searching through the list acc to what is typed in searchbox
 viewModel.search = function() {
     var q = viewModel.query().toLowerCase();
+    console.log(q);
     if(q.length === 0) {
         viewModel.showAll(true);
     }
     else  {
         ko.utils.arrayFilter(viewModel.places(), function(place) {		
         	var title = place.title.toLowerCase();
-        	if (title.indexOf(q) > -1)		
-            	place.show(true);
-        	else
+        	if (title.indexOf(q) > -1) {
+        		place.show(true);
+        		//loop over markers and set its visibility to true
+        		for(var i = 0; i < viewModel.markers().length; i++) {
+        			if(title == viewModel.markers()[i].title.toLowerCase()) {
+        				viewModel.markers()[i].setVisible(true);
+        				populateInfoWindow(viewModel.markers()[i]);
+        			}
+        		}
+        	}		
+        	else {
             	place.show(false);
+            	//loop over markers and set visibility to false
+            	for(var i = 0; i < viewModel.markers().length; i++) {
+        			if(title == viewModel.markers()[i].title.toLowerCase()) {
+        				viewModel.markers()[i].setVisible(false);
+        			}
+        		}
+        	}
 		});    
     }
 };
